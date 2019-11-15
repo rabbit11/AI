@@ -7,6 +7,8 @@ from scipy.spatial.distance import pdist
 from matplotlib import pyplot as plt
 from scipy.spatial import distance
 import math
+# %matplotlib inline
+np.set_printoptions(precision=5, suppress=True)  # suppress scientific float
 import os
 
 print(os.listdir("../../datasets/datasets/"))
@@ -18,6 +20,7 @@ print(c1)
 plt.scatter(c1['x0'],c1['x1'])
 
 def singleDistance(clusters, clustQty):
+    print('first cluster | ', 'second cluster | ', 'distance')
     while len(clusters) is not clustQty:
         #inicializando a distancia entre os clusters como infinito
         minDist = clust1 = clust2 = math.inf
@@ -68,8 +71,9 @@ for cluster_index, cluster in enumerate(clusters):
 X = c1.as_matrix()
 # generate the linkage matrix
 # using single link metric to evaluate 'distance' between clusters
-# single_link = linkage(X, 'single')
+single_link = linkage(X, 'single')
 
-# c, coph_dists = cophenet(single_link, pdist(X))
-# c
+c, coph_dists = cophenet(single_link, pdist(X))
+c
 
+single_link[0]
