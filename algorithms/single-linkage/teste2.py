@@ -34,8 +34,8 @@ if val == 1 or val == 2:
                 s=100, c='red', label='Cluster 1')
     plt.scatter(X[data == 1, 0], X[data == 1, 1],
                 s=100, c='blue', label='Cluster 2')
-    plt.scatter(X[data == 2, 0], X[data == 2, 1],
-                s=100, c='green', label='Cluster 3')
+    # plt.scatter(X[data == 2, 0], X[data == 2, 1],
+    #             s=100, c='green', label='Cluster 3')
 else:
     plt.scatter(X[data == 0, 0], X[data == 0, 1],
                 s=100, c='red', label='Cluster 1')
@@ -52,5 +52,5 @@ else:
     plt.scatter(X[data == 6, 0], X[data == 6, 1],
                 s=100, c='magenta', label='Cluster 7')
 
-plt.title('Clusters Single-linkage')
+plt.title('Clusters Single-Linkage')
 plt.show()
