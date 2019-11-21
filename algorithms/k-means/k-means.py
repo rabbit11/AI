@@ -50,7 +50,9 @@ for x in range(kmin, kmax + 1):
     np.savetxt('output' + '_' + title + str(x) + '.clu', data.astype(int), fmt='%i', delimiter=",")
 
     plt.scatter(X[:, 0], X[:, 1], s=100,c=al.labels_.astype(float), label = 'Cluster ' + str(x - kmin))
-    plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=50)
+
+    # para visualizacao dos centroides podemos colori-los de vermelho
+    # plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=50)
 
     if val == 1:
         title = 'c2ds1-2sp ' + str(x) + 'c'
