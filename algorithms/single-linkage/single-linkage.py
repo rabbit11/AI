@@ -4,6 +4,7 @@ import os
 import matplotlib.pyplot as plt
 import scipy.cluster.hierarchy as sch
 from sklearn.cluster import AgglomerativeClustering
+from sklearn.metrics.cluster import adjusted_rand_score
 
 print("Escolha o arquivo 1, 2 ou 3 de entrada")
 val = int(input())
@@ -21,16 +22,31 @@ else:
     kmin = 5
     kmax = 12
 
-nclusters = kmax - kmin
-
 X = c.iloc[:, [1, 2]].values
-al = AgglomerativeClustering(
-    n_clusters=nclusters, affinity='euclidean', linkage='single')
 
-data = al.fit_predict(X)
+for x in range(kmin, kmax + 1):
 
-for i in range(kmin, kmax + 1):
-    plt.scatter(X[:, 0], X[:, 1], c=al.labels_, cmap='rainbow', s=100)
+    al = AgglomerativeClustering(
+        n_clusters=x, affinity='euclidean', linkage='single')
 
-    plt.title('Clusters Single-Linkage')
-    plt.savefig('single-linkage' + str(i-1))
+    data = al.fit_predict(X)
+
+    plt.scatter(X[:, 0], X[:, 1], s=100, c=al.labels_.astype(
+        float), label='Cluster ' + str(x - kmin))
+
+    if val == 1:
+        title = 'c2ds1-2sp ' + str(x) + 'c'
+        plt.title(title)
+        plt.savefig(title)
+    elif val == 2:
+        title = 'c2ds3-2g ' + str(x) + 'c'
+        plt.title(title)
+        plt.savefig(title)
+    else:
+        title = 'monkey ' + str(x) + 'c'
+        plt.title(title)
+        plt.savefig(title)
+
+    # print(adjusted_rand_score(X, ))
+
+    plt.show()
