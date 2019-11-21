@@ -61,3 +61,15 @@ for x in range(kmin, kmax + 1):
     print(adjusted_rand_score(data, resultClu))
 
     plt.show()
+
+ # transformando os dados para dataframe
+    df = pd.DataFrame(X)
+    df.columns = ["d1", "d2"]
+    df["cluster"] = data
+
+    # podemos ou nao ordenar os dados segundo algum criterio
+    # df = df.sort_values("cluster")
+
+    # salvando em csv o resultado do algoritmo
+    df.to_csv("Resul-Average-dados" + str(val) +
+              " e " + str(x) + "-clusters.csv")
