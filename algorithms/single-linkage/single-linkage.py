@@ -78,7 +78,7 @@ for x in range(kmin, kmax + 1):
     df["cluster"] = data
 
     # podemos ou nao ordenar os dados segundo algum criterio
-    # df = df.sort_values("cluster")
+    df = df.sort_values("cluster")
 
     # salvando em csv o resultado do algoritmo
     df.to_csv("Resul-Single-dados" + str(val) +
