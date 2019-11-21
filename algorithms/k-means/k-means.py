@@ -1,6 +1,7 @@
 import pandas as pd
 import math
 import os
+import numpy as np
 import matplotlib.pyplot as plt
 import scipy.cluster.hierarchy as sch
 from sklearn.cluster import KMeans
@@ -36,7 +37,6 @@ else:
 for linha in readClu:
     novaLinha = linha.strip("\n").split("\t")
     resultClu.append(int(novaLinha[1]))
-    print(resultClu)
 
 X = c.iloc[:, [1, 2]].values
 
@@ -45,6 +45,9 @@ for x in range(kmin, kmax + 1):
     al = KMeans(n_clusters = x, n_init = n_iter)
     data = al.fit_predict(X)
     centroids = al.cluster_centers_
+    # print(data.astype(int))
+    output_file = open("output.clu", 'w+')
+    np.savetxt('output' + '_' + title + str(x) + '.clu', data.astype(int), fmt='%i', delimiter=",")
 
     plt.scatter(X[:, 0], X[:, 1], s=100,c=al.labels_.astype(float), label = 'Cluster ' + str(x - kmin))
     plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=50)
