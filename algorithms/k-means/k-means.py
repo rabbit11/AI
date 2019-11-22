@@ -46,8 +46,8 @@ for x in range(kmin, kmax + 1):
     data = al.fit_predict(X)
     centroids = al.cluster_centers_
     # print(data.astype(int))
-    output_file = open("output.clu", 'w+')
-    np.savetxt('output' + '_' + title + str(x) + '.clu', data.astype(int), fmt='%i', delimiter=",")
+    # output_file = open("output.clu", 'w+')
+    # np.savetxt('output' + '_' + title + str(x) + '.clu', data.astype(int), fmt='%i', delimiter=",")
 
     plt.scatter(X[:, 0], X[:, 1], s=100,c=al.labels_.astype(float), label = 'Cluster ' + str(x - kmin))
 
